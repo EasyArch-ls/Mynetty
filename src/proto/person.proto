@@ -1,0 +1,55 @@
+// See README.txt for information and build instructions.
+//
+// Note: START and END tags are used in comments to define sections used in
+// tutorials.  They are not part of the syntax for Protocol Buffers.
+//
+// To get an in-depth walkthrough of this file and the related examples, see:
+// https://developers.google.com/protocol-buffers/docs/tutorials
+
+// [START declaration]
+syntax = "proto2";
+package tutorial;
+
+// [END declaration]
+
+// [START java_declaration]
+option java_package = "Myproto";
+option java_outer_classname = "Mypersion";
+// [END java_declaration]
+
+// [START csharp_declaration]
+option csharp_namespace = "Google.Protobuf.Examples.AddressBook";
+// [END csharp_declaration]
+
+// [START messages]
+
+
+message Mymessage {
+
+  enum DataType{
+    PersonType = 0;
+    StudentType = 1;
+  }
+  required DataType data_type = 1;
+
+  oneof data{
+      Person person=2;
+      Student student=3;
+  }
+
+}
+
+message Person {
+  optional string name = 1;
+  optional int32 id = 2;  // Unique ID number for this person.
+  optional string email = 3;
+
+}
+message Student {
+    optional string name = 1;
+    optional int32 id = 2;  // Unique ID number for this person.
+    optional string grade = 3;
+
+}
+
+
