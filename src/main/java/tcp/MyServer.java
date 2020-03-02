@@ -22,8 +22,8 @@ public class MyServer {
             try {
                 ServerBootstrap serverBootstrap=new ServerBootstrap();
                 serverBootstrap.group(bossGroup,workerGoup).channel(NioServerSocketChannel.class)
-                        .handler(new LoggingHandler(LogLevel.INFO)).
-                        childHandler(new MyInityializer());
+                        .handler(new LoggingHandler(LogLevel.INFO))
+                        .childHandler(new MyInityializer());
                 ChannelFuture channelFuture=serverBootstrap.bind(6666).sync();
                 channelFuture.channel().closeFuture().sync();
             } catch (InterruptedException e) {
